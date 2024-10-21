@@ -1,0 +1,28 @@
+# Ignorar o ambiente virtual
+venv/
+
+# Ignorar arquivos de cache do Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignorar arquivos de configuração de IDEs
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Ignorar o arquivo .env que contém variáveis de ambiente sensíveis
+.env
+Cataloging-for-marketplaces/infinite-badge-435218-q9-dba072799d7b.json
+
+# Ignorar arquivos de log
+*.log
+
+# Ignorar dependências instaladas globalmente
+*.egg-info/
+*.eggs/
+
+# Ignorar arquivos temporários criados pelo sistema operacional
+.DS_Store
+Thumbs.db
