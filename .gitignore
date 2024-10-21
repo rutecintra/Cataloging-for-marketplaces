@@ -14,7 +14,7 @@ __pycache__/
 
 # Ignorar o arquivo .env que contém variáveis de ambiente sensíveis
 .env
-Cataloging-for-marketplaces/infinite-badge-435218-q9-dba072799d7b.json
+infinite-badge-435218-q9-dba072799d7b.json
 
 # Ignorar arquivos de log
 *.log
