@@ -39,14 +39,14 @@ cd product-weight-estimator
 
 ### 2. Criar e Ativar um Ambiente Virtual
 
-Para Windows:
+**Para Windows**:
 
 ```bash
 python -m venv venv
 venv\Scripts\activate
 ```
 
-Para Mac/Linux:
+**Para Mac/Linux**:
 
 ```bash
 python3 -m venv venv
@@ -55,7 +55,7 @@ source venv/bin/activate
 
 ### 3. Instalar as Dependências
 
-Instale as dependências listadas no arquivo requirements.txt:
+Instale as dependências listadas no arquivo `requirements.txt`:
 
 ```bash
 pip install -r requirements.txt
@@ -63,7 +63,7 @@ pip install -r requirements.txt
 
 ### 4. Definir Variáveis de Ambiente
 
-Crie um arquivo .env na raiz do projeto e adicione suas chaves de API, conforme necessário:
+Crie um arquivo `.env` na raiz do projeto e adicione suas chaves de API, conforme necessário:
 
 ```bash
 OPENAI_API_KEY=your_openai_key
@@ -79,4 +79,4 @@ Após configurar as variáveis de ambiente, execute o servidor Flask:
 python run.py
 ```
 
-O servidor rodará por padrão em http://localhost:5000.
+O servidor rodará por padrão do código em `http://localhost:8080`.
