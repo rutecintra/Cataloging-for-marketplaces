@@ -1,0 +1,6 @@
+Flask
+requests
+openai
+python-dotenv
+google-cloud-vision
+pytest
