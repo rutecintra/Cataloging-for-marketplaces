@@ -1,10 +1,4 @@
-import pandas as pd
 import json
-
-def load_data(file_path):
-
-    return pd.read_excel(file_path).to_dict(orient='records')
-
 
 def save_data_to_json(filename, data):
 

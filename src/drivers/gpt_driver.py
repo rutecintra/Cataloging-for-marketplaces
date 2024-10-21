@@ -25,9 +25,7 @@ class GPTAPI:
                 model="gpt-3.5-turbo",
                 messages=[
                     {"role": "system", "content": "Você é um assistente especializado em estimar pesos de produtos com base na descrição de imagens."},
-                    {"role": "user", "content": f"Com base na descrição: '{description}', no nome do produto: '{product_name}' e na marca do produto: 
-                    '{product_brand}', estime um peso específico do produto e responda com um número seguido da unidade de medida (g ou kg)."
-                    }
+                    {"role": "user", "content": f"Com base na descrição: '{description}', no nome do produto: '{product_name}' e na marca do produto: '{product_brand}', estime um peso específico do produto e responda com um número seguido da unidade de medida (g ou kg)."}
                 ],
 
                 max_tokens=10

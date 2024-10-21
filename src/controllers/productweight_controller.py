@@ -2,6 +2,7 @@ from src.models.product_model import Product
 from src.drivers.bestbuy_driver import BestBuyAPI
 from src.drivers.gpt_driver import GPTAPI
 from src.utils.weight_utils import calculate_average_weight, convert_weight_to_kg
+from collections import OrderedDict
 
 class ProductWeightController:
     def __init__(self):
@@ -10,10 +11,11 @@ class ProductWeightController:
 
     def process_product_weight(self, data):
         weight_search_channel = data.get('weight_search_channel', 'all')
+        products = data.get('products', [])
 
         results = []
 
-        for product_data in data:
+        for product_data in products:
 
             product = Product(
                 sku=product_data['sku'],
@@ -30,7 +32,8 @@ class ProductWeightController:
 
                 if weight_bestbuy:
 
-                    product['estimated_weight_bestbuy'] = convert_weight_to_kg(weight_bestbuy)
+                    product.estimated_weight_bestbuy = convert_weight_to_kg(weight_bestbuy)
+                    print(convert_weight_to_kg(weight_bestbuy))
 
             weight_gpt = None
 
@@ -40,14 +43,20 @@ class ProductWeightController:
 
                 if weight_gpt:
 
-                    product['estimated_weight_gpt'] = convert_weight_to_kg(weight_gpt)
+                    product.estimated_weight_gpt = convert_weight_to_kg(weight_gpt)
 
-            product['average_weight'] = calculate_average_weight(weight_gpt, weight_bestbuy)
+            product.average_weight = calculate_average_weight(weight_gpt, weight_bestbuy)
 
-            product.estimated_weight_bestbuy = weight_bestbuy
-            product.estimated_weight_gpt = weight_gpt
-            product.average_weight = product['average_weight']
+            product_dict = OrderedDict([
+                ("sku", product.sku),
+                ("productname", product.name),
+                ("productbrand", product.brand),
+                ("image_url", product.image_url),
+                ("estimated_weight_bestbuy", product.estimated_weight_bestbuy),
+                ("estimated_weight_gpt", product.estimated_weight_gpt),
+                ("average_weight", product.average_weight)
+            ])
 
-            results.append(product.to_dict())
+            results.append(product_dict)
 
         return results

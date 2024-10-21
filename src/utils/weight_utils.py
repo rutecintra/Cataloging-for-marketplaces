@@ -2,49 +2,56 @@ import re
 
 def convert_weight_to_grams(weight):
 
-    match = re.search(r'(\d+(\.\d+)?)\s*(kg|g|pounds|lbs)', weight, re.IGNORECASE)
+    if weight is not None:
 
-    if match:
+        match = re.search(r'(\d+(\.\d+)?)\s*(kg|g|pounds|lbs)', weight, re.IGNORECASE)
 
-        number = float(match.group(1))
-        unit = match.group(3).lower()
+        if match:
 
-        if unit == 'kg':
+            number = float(match.group(1))
+            unit = match.group(3).lower()
 
-            return number * 1000
-        
-        elif unit in ['pounds', 'lbs']:
+            if unit == 'kg':
 
-            return number * 453.592
-        
-        return number
+                return number * 1000
+            
+            elif unit in ['pounds', 'lbs']:
+
+                return number * 453.592
+            
+            return number
     
-    return None
+        return None
+    
+    return weight
+
 
 def convert_weight_to_kg(weight):
 
-    match = re.search(r'(\d+(\.\d+)?)\s*(kg|g|pounds|lbs)', weight, re.IGNORECASE)
+    if weight is not None:
 
-    if match:
+        match = re.search(r'(\d+(\.\d+)?)\s*(kg|g|pounds|lbs)', weight, re.IGNORECASE)
 
-        weight = float(match.group(1))
-        unit = match.group(3).lower()
+        if match:
 
-        if unit == 'kg':
+            weight = float(match.group(1))
+            unit = match.group(3).lower()
 
-            return f"{weight:.2f} kg"
+            if unit == 'kg':
 
-        elif unit in ['pounds', 'lbs']:
+                return f"{weight:.2f} kg"
 
-            weight = weight * 453.592
+            elif unit in ['pounds', 'lbs']:
 
-        if weight >= 1000:
+                weight = weight * 453.592
 
             weight = weight / 1000
 
-        return f"{weight:.2f} kg"
+            return f"{weight:.2f} kg"
+        
+        return None
     
-    return None
+    return weight
 
 
 def calculate_average_weight(weight_gpt, weight_bestbuy):
@@ -60,7 +67,7 @@ def calculate_average_weight(weight_gpt, weight_bestbuy):
 
         weight_in_g = weight_gpt if weight_gpt else (weight_bestbuy if weight_bestbuy else None)
 
-        if weight_in_g is None: 
+        if weight_in_g is None:
 
             return None
 
